@@ -85,6 +85,13 @@ class Pacman{
                     return false;
         }
 
+        //intento de mundo circular
+        /*if (inputUsuario.equals("d") && elPersonaje[27][13]){
+                elPersonaje[27][13]=elPersonaje[0][13];
+        }
+        if (inputUsuario.equals("a") && elPersonaje[0][13]){
+            elPersonaje[0][13]=elPersonaje[27][13];
+        }*/
 
         elPersonaje[0][0] = elPersonajeX;
 		elPersonaje[0][1] = elPersonajeY;
@@ -138,6 +145,9 @@ class Pacman{
 					}
 				 
 			}
+
+
+        
 			imprimeBordeVertical(true);
 		}		
 		imprimeBordeHorizontal(mapaPorImprimir[0].length);
