@@ -36,12 +36,12 @@ class Pacman{
 
         };
 
-		int[][] elPersonaje = { { 1, 1 } };
+		int[][] elPersonaje = { { 15, 24 } };
         int[][] losNPCs = {
-            { 12, 14 },
-            { 12, 12 },
-            { 14, 14 },
-            { 14, 12 },
+            { 11, 13 },
+            { 12, 13 },
+            { 14, 13 },
+            { 17, 13 },
     };
 		do {
 			imprimeMapa(unMapa, elPersonaje, losNPCs);
