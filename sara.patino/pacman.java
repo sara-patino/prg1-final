@@ -2,7 +2,9 @@ import java.util.Scanner;
 class Pacman{	
 	
 	public static void main(String[] args){
-			
+		int turno=0;
+        
+        
 		int[][] unMapa = {
             {1, 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1},
             {1, 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  1,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  1},
@@ -42,10 +44,20 @@ class Pacman{
             { 12, 13 },
             { 14, 13 },
             { 17, 13 },
+
+       
     };
+
+            
 		do {
+        
 			imprimeMapa(unMapa, elPersonaje, losNPCs);
-		} while (procesaMovimiento(unMapa,elPersonaje, losNPCs));
+        
+            System.out.println("turno " +turno++);
+
+            
+
+		} while ((procesaMovimiento(unMapa,elPersonaje, losNPCs)) && turno<1000);
 	}
 	private static boolean procesaMovimiento(int[][] elMapa, int[][]elPersonaje, int[][] losNPCs){
         mueveNPCs(elMapa, losNPCs);
@@ -54,6 +66,7 @@ class Pacman{
 		
 		inputUsuario = entrada.nextLine();
         int elPersonajeX, elPersonajeY;
+
         
 		
         elPersonajeX = elPersonaje[0][0];
@@ -79,6 +92,10 @@ class Pacman{
         if(elMapa[elPersonajeY][elPersonajeX]==2){
             elMapa[elPersonajeY][elPersonajeX]=0;
         } 
+
+        
+
+
 
 		return true;
 	}
