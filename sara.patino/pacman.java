@@ -68,7 +68,9 @@ class Pacman{
 			elPersonajeY = elPersonajeY + 1;
 	    	} else if (inputUsuario.equals("f")) {
 			        return false;
-		}
+		}else if(muerePacman(elPersonaje, losNPCs)==false){
+                    return false;
+        }
 
 
         elPersonaje[0][0] = elPersonajeX;
@@ -130,6 +132,17 @@ class Pacman{
 			System.out.print("NPC[" + unNPC + "]=(" + losNPCs[unNPC][0] + "," + losNPCs[unNPC][1] + ") - ");
 		}
 	}
+
+    private static boolean muerePacman(int[][] elPersonaje, int[][] losNPCs) {
+        for (int unNPC = 0; unNPC < losNPCs.length; unNPC++) {
+            if((elPersonaje[0][0] == losNPCs[unNPC][0]) && (elPersonaje[0][1]== losNPCs[unNPC][1])){
+                System.out.println("Pacman murio :( Se termino el juego");
+                return false;
+            }
+            
+        }
+        return true;
+    }
 	
 	private static void imprimePersonaje(){
 		System.out.print(" :v");
