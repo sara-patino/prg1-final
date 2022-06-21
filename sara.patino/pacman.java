@@ -85,14 +85,15 @@ class Pacman{
                     return false;
         }
 
-        //intento de mundo circular
-        /*if (inputUsuario.equals("d") && elPersonaje[27][13]){
-                elPersonaje[27][13]=elPersonaje[0][13];
+        //mundo circular
+		if (inputUsuario.equals("a") && elPersonajeX==0 && elPersonajeY==13){
+			elPersonajeX=27;
         }
-        if (inputUsuario.equals("a") && elPersonaje[0][13]){
-            elPersonaje[0][13]=elPersonaje[27][13];
-        }*/
 
+		if (inputUsuario.equals("d") && elPersonajeX==27 && elPersonajeY==13){
+                elPersonajeX=0;
+        }
+       
         elPersonaje[0][0] = elPersonajeX;
 		elPersonaje[0][1] = elPersonajeY;
 
