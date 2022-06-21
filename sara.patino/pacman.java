@@ -1,6 +1,17 @@
 import java.util.Scanner;
 class Pacman{	
 	
+	public static int ContPoints(int[][] matrix){
+		int point = 0;
+		for(int x = 0; x < matrix.length; x++){
+			for(int y = 0 ; y < matrix[x].length; y++){
+				if(matrix[x][y] == 2){
+					point++;
+				}
+			}
+		}
+		return point;
+	}
 	public static void main(String[] args){
 		int turno=0;
         
@@ -52,8 +63,10 @@ class Pacman{
 		do {
         
 			imprimeMapa(unMapa, elPersonaje, losNPCs);
-        
-            System.out.println("turno " +turno++);
+			int totalPoints = ContPoints(unMapa);
+			System.out.println("");
+			System.out.println("Monedas Restantes: "+totalPoints);
+            System.out.println("turno: " +turno++);
 
             
 
@@ -66,7 +79,7 @@ class Pacman{
 		
 		inputUsuario = entrada.nextLine();
         int elPersonajeX, elPersonajeY;
-
+		int puntos=0;
         
 		
         elPersonajeX = elPersonaje[0][0];
@@ -97,16 +110,20 @@ class Pacman{
         elPersonaje[0][0] = elPersonajeX;
 		elPersonaje[0][1] = elPersonajeY;
 
-        if(elMapa[elPersonajeY][elPersonajeX]==2){
-            elMapa[elPersonajeY][elPersonajeX]=0;
-        } 
+
 
         
-
+		if(elMapa[elPersonajeY][elPersonajeX]==2){
+            puntos= puntos+1;
+			elMapa[elPersonajeY][elPersonajeX]=0;
+			
+        }
 
 
 		return true;
 	}
+
+	
 
 	private static void mueveNPCs(int[][] elMapa, int[][] losNPCs) {
 		double movimiento;
