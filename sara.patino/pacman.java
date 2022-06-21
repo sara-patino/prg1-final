@@ -1,17 +1,7 @@
 import java.util.Scanner;
 class Pacman{	
 	
-	public static int ContPoints(int[][] matrix){
-		int point = 0;
-		for(int x = 0; x < matrix.length; x++){
-			for(int y = 0 ; y < matrix[x].length; y++){
-				if(matrix[x][y] == 2){
-					point++;
-				}
-			}
-		}
-		return point;
-	}
+
 
 	public static void main(String[] args){
 		int turno=0;
@@ -63,11 +53,9 @@ class Pacman{
 		do {
         
 			imprimeMapa(unMapa, elPersonaje, losNPCs);
-			int totalPoints = ContPoints(unMapa);
-			System.out.println("");
-			System.out.println("Monedas Restantes: "+totalPoints);
+			 
             System.out.println("turno: " +turno++);
-
+			monedasRestantes(unMapa);
             
 
 		} while ((procesaMovimiento(unMapa,elPersonaje, losNPCs)));
@@ -118,6 +106,10 @@ class Pacman{
 			elMapa[elPersonajeY][elPersonajeX]=0;
 			
         }
+
+
+
+	
 
 
 		return true;
@@ -190,7 +182,27 @@ class Pacman{
         }
         return true;
     }
-	
+
+	static void monedasRestantes(int[][]elMapa){
+        int monedasRestantes;
+        monedasRestantes=0;
+        for(int i=0;i<elMapa.length;i++){
+            for(int j=0;j<elMapa[i].length;j++){
+                if(elMapa[i][j]==2){
+                    monedasRestantes = monedasRestantes + 1;   
+                }
+            }
+        }
+
+        System.out.println("Monedas restantes: " + "[" + monedasRestantes + "]");
+        System.out.println("Puntos: " + puntos);
+        if(monedasRestantes==0){
+            System.out.println("Felicidades, has completado el juego!!");
+            hayMonedas=false;
+        }
+    }
+
+
 	private static void imprimePersonaje(){
 		System.out.print(" :v");
 	}
@@ -226,4 +238,7 @@ class Pacman{
 	
 
 	static int puntos=0;
+	static boolean hayMonedas=true;
+	static int monedasTotal=244;
+	static int monedasRestantes= monedasTotal-puntos;
 }
