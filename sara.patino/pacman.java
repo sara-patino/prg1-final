@@ -12,6 +12,7 @@ class Pacman{
 		}
 		return point;
 	}
+
 	public static void main(String[] args){
 		int turno=0;
         
@@ -49,15 +50,14 @@ class Pacman{
 
         };
 
-		int[][] elPersonaje = { { 15, 24 } };
+		int[][] elPersonaje = { { 22, 13 } };
         int[][] losNPCs = {
             { 11, 13 },
             { 12, 13 },
             { 14, 13 },
-            { 17, 13 },
-
-       
+            { 17, 13 },  
     };
+	
 
             
 		do {
@@ -70,7 +70,7 @@ class Pacman{
 
             
 
-		} while ((procesaMovimiento(unMapa,elPersonaje, losNPCs)) && turno<1000);
+		} while ((procesaMovimiento(unMapa,elPersonaje, losNPCs)));
 	}
 	private static boolean procesaMovimiento(int[][] elMapa, int[][]elPersonaje, int[][] losNPCs){
         mueveNPCs(elMapa, losNPCs);
@@ -79,7 +79,7 @@ class Pacman{
 		
 		inputUsuario = entrada.nextLine();
         int elPersonajeX, elPersonajeY;
-		int puntos=0;
+		
         
 		
         elPersonajeX = elPersonaje[0][0];
@@ -163,13 +163,15 @@ class Pacman{
 					}
 				 
 			}
-
+			
 
         
 			imprimeBordeVertical(true);
 		}		
 		imprimeBordeHorizontal(mapaPorImprimir[0].length);
 		imprimeStatus(elPersonaje, losNPCs);
+		System.out.println("");
+		System.out.println(puntos+" puntos");
 	}
 	private static void imprimeStatus(int[][] elPersonaje, int[][] losNPCs) {
 		System.out.println("Personaje en X:[" + elPersonaje[0][0] + "] Y:[" + elPersonaje[0][1] + "]");
@@ -222,4 +224,6 @@ class Pacman{
 		System.out.print(matrizDeElementos[elementoDelMapa]);
 	}
 	
+
+	static int puntos=0;
 }
