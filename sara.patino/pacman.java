@@ -60,6 +60,12 @@ class Pacman{
 
 		} while ((procesaMovimiento(unMapa,elPersonaje, losNPCs)));
 	}
+
+	private static void limpiaPantalla() {
+		System.out.print("\033[H\033[2J");
+        System.out.flush();
+	}
+
 	private static boolean procesaMovimiento(int[][] elMapa, int[][]elPersonaje, int[][] losNPCs){
         mueveNPCs(elMapa, losNPCs);
 		Scanner entrada = new Scanner(System.in);
@@ -106,7 +112,13 @@ class Pacman{
 			elMapa[elPersonajeY][elPersonajeX]=0;
 			
         }
+		if(elMapa[elPersonajeY][elPersonajeX]==4){
+			puntos=puntos+5;
+		}
 
+		if(elMapa[elPersonajeY][elPersonajeX]==6){
+			puntos=puntos+10;
+		}
 
 
 	
@@ -138,6 +150,7 @@ class Pacman{
 		}
 	}
     private static void imprimeMapa(int[][] mapaPorImprimir, int[][]elPersonaje, int[][] losNPCs){
+		limpiaPantalla();
 		
 		imprimeBordeHorizontal(mapaPorImprimir[0].length);
 		
